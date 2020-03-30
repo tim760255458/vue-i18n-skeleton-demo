@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ $t("message.title") }}</h1>
+    <div>
+      <span style="margin-right: 10px;">切换语言</span>
+      <select v-model="locale" class="select-lang">
+        <option class="select-lang-item" value="zh">中文</option>
+        <option class="select-lang-item" value="en">English</option>
+      </select>
+    </div>
+    <CardItem />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CardItem from './components/CardItem'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CardItem
+  },
+  data () {
+    return {
+      locale: 'zh'
+    }
+  },
+  watch: {
+    locale(newVal) {
+      this.$i18n.locale = newVal
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.select-lang {
+  width: 100px;
+  height: 30px;
+  box-shadow: 1px 1px 5px #ddd;
 }
 </style>
