@@ -1,6 +1,6 @@
 # i18n 和 Skeleton
 
-国际化和骨架屏的demo
+基于 vue-cli3 创建的国际化和骨架屏的demo
 
 注意：
 
